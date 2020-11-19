@@ -34,3 +34,23 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
+
+// sterge itemele din cos indiferent de cantitate
+export const filterItemFromCart = ( cartItems, item) =>
+  cartItems.filter(cartItem => cartItem.id !== item.id);
+
+// numarul total de itemelor si cantiatea totala a itemelor
+export const getCartItemsCount = cartItems =>
+  cartItems.reduce(
+    (accumalatedQuantity, cartItem) =>
+      accumalatedQuantity + cartItem.quantity,
+    0
+  );
+
+// suma totala de plata
+export const getCartTotal = cartItems =>
+cartItems.reduce(
+  (accumalatedQuantity, cartItem) =>
+    accumalatedQuantity + cartItem.quantity * cartItem.price,
+  0
+)
